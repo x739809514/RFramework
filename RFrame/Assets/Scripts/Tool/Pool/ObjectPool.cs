@@ -32,14 +32,13 @@ public class ObjectPool<T> where T : MonoBehaviour
         this.parent = parent;
         this.prefab = prefab;
         objectPool = new Queue<T>();
-        CreatePool(RETAIL_COUNT);
     }
 
     private void CreatePool(int count)
     {
         for (int i = 0; i < count; i++)
         {
-            GameObject go = Object.Instantiate(prefab);
+            GameObject go = Object.Instantiate(prefab, this.parent, true);
             go.SetActive(false);
             var t = go.GetComponent<T>();
             objectPool.Enqueue(t);
@@ -56,8 +55,7 @@ public class ObjectPool<T> where T : MonoBehaviour
         var t = objectPool.Dequeue();
         var go = t.gameObject;
         go.SetActive(true);
-        go.transform.SetParent(this.parent);
-        go.transform.localPosition = Vector2.zero;
+        go.transform.localPosition = Vector3.zero;
         go.transform.localRotation = Quaternion.identity;
 
         return t;

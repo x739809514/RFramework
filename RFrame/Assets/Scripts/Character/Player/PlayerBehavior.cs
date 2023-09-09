@@ -1,4 +1,4 @@
-﻿using Unity.VisualScripting;
+﻿using System.Collections;
 using UnityEngine;
 
 public class PlayerBehavior : MonoBehaviour
@@ -15,6 +15,11 @@ public class PlayerBehavior : MonoBehaviour
         player = GetComponent<Player>();
         checkGroundObj = transform.Find("checkGround").gameObject;
         playerData = player.playerData;
+    }
+
+    private void Start()
+    {
+        ObjectPool<Bullets>.Instance.InitPool(player.bulletPool, player.bullet);
     }
 
     private void Update()
@@ -65,13 +70,21 @@ public class PlayerBehavior : MonoBehaviour
 
     private void Shoot()
     {
-        if (Input.GetKeyDown(KeyCode.K))
+        if (Input.GetMouseButtonDown(1))
         {
             //Todo:射击逻辑
-            ObjectPool<Bullets>.Instance.InitPool(player.bulletPool, player.bullet);
             var bullet = ObjectPool<Bullets>.Instance.Spawn();
-            //Todo:回收
+            bullet.player = player;
+            
+            StartCoroutine(BulletVanish(bullet));
         }
+    }
+
+    IEnumerator BulletVanish(Bullets bullet)
+    {
+        yield return new WaitForSeconds(1f);
+        
+        ObjectPool<Bullets>.Instance.Recycle(bullet);
     }
 
 #endregion
