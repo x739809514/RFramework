@@ -19,7 +19,8 @@ public class PlayerBehavior : MonoBehaviour
 
     private void Start()
     {
-        ObjectPool<Bullets>.Instance.InitPool(player.bulletPool, player.bullet);
+        ObjectPool<PlayerBullets>.Instance.InitPool(player.bulletPool, player.bullet);
+        ObjectPool<Mark>.Instance.InitPool(player.markPool, player.mark);
     }
 
     private void Update()
@@ -40,7 +41,7 @@ public class PlayerBehavior : MonoBehaviour
     }
 
 
-#region Movement
+#region Behavior
 
     private void Walk()
     {
@@ -64,27 +65,40 @@ public class PlayerBehavior : MonoBehaviour
         player.rig.velocity = new Vector2(player.rig.velocity.x, playerData.jumpSpeed);
     }
 
-#endregion
-
-#region Shoot
-
     private void Shoot()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            //射击实弹
+            var bullet = ObjectPool<PlayerBullets>.Instance.Spawn();
+            StartCoroutine(OnVanishBullet(bullet));
+        }
+
         if (Input.GetMouseButtonDown(1))
         {
-            //Todo:射击逻辑
-            var bullet = ObjectPool<Bullets>.Instance.Spawn();
-            bullet.player = player;
-            
-            StartCoroutine(BulletVanish(bullet));
+            //射击标记
+            var mark = ObjectPool<Mark>.Instance.Spawn();
+            StartCoroutine(OnVanishMark(mark));
         }
     }
 
-    IEnumerator BulletVanish(Bullets bullet)
+#endregion
+
+#region IEnumerator
+
+    IEnumerator OnVanishBullet(PlayerBullets playerBullet)
     {
         yield return new WaitForSeconds(1f);
-        
-        ObjectPool<Bullets>.Instance.Recycle(bullet);
+
+        ObjectPool<PlayerBullets>.Instance.Recycle(playerBullet);
+    }
+
+
+    IEnumerator OnVanishMark(Mark mark)
+    {
+        yield return new WaitForSeconds(1f);
+
+        ObjectPool<Mark>.Instance.Recycle(mark);
     }
 
 #endregion

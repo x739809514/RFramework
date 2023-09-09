@@ -1,14 +1,17 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Bullets : MonoBehaviour
 {
     private float nextFire;
-    public Player player;
     private readonly float fireRate = 1f;
     private readonly float bulletSpeed = 5f;
 
     private void FixedUpdate()
+    {
+        BulletLaunch();
+    }
+
+    protected virtual void BulletLaunch()
     {
         nextFire += Time.deltaTime;
         if (nextFire > fireRate)

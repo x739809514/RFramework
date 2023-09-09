@@ -7,6 +7,8 @@ public class Player : Character
     public PlayerScriptableObject playerData;
     public GameObject bullet;
     public Transform bulletPool;
+    public GameObject mark;
+    public Transform markPool;
 
     private void Awake()
     {

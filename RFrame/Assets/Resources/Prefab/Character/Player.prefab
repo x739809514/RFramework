@@ -182,6 +182,7 @@ Transform:
   - {fileID: 3926907134945022774}
   - {fileID: 4676152394147731424}
   - {fileID: 4489973173848498791}
+  - {fileID: 1265736653337785560}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1919518234175198493
@@ -273,6 +274,8 @@ MonoBehaviour:
   playerData: {fileID: 11400000, guid: 37b9cbbe35e1ed849987676c803f7567, type: 2}
   bullet: {fileID: 4904108489833142175, guid: 63c7f89416f42034c870406e90a7efcd, type: 3}
   bulletPool: {fileID: 4489973173848498791}
+  mark: {fileID: 4904108489833142175, guid: 1cac164251e82bb42ad4cbdbc9ab6f76, type: 3}
+  markPool: {fileID: 1265736653337785560}
 --- !u!114 &1632859353055598986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,3 +288,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f52449a5f6c64ab483349f09507a12e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &8304872179824111352
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1265736653337785560}
+  m_Layer: 0
+  m_Name: markPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1265736653337785560
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8304872179824111352}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1587682615588461927}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

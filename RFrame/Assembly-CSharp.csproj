@@ -48,6 +48,7 @@
      <Compile Include="Assets\Scripts\GamePlay\Camera\PlayerCameraControl.cs" />
      <Compile Include="Assets\Scripts\Character\Player\PlayerBehavior.cs" />
      <Compile Include="Assets\Scripts\GamePlay\Level\GameStart.cs" />
+     <Compile Include="Assets\Scripts\GamePlay\GameObjects\PlayerBullets.cs" />
      <Compile Include="Assets\Scripts\Tool\Enums.cs" />
      <Compile Include="Assets\Scripts\Interface\IFactory\IFactory.cs" />
      <Compile Include="Assets\Scripts\Data\Scriptable\PlayerScriptableObject.cs" />
@@ -55,6 +56,7 @@
      <Compile Include="Assets\Scripts\Tool\Pool\ObjectPool.cs" />
      <Compile Include="Assets\Scripts\Factory\PlayerFactory.cs" />
      <Compile Include="Assets\Scripts\Data\Scriptable\LevelScriptableObject.cs" />
+     <Compile Include="Assets\Scripts\GamePlay\GameObjects\Mark.cs" />
      <Compile Include="Assets\Scripts\Character\Enemy\Enemy.cs" />
      <Compile Include="Assets\Scripts\GamePlay\GameObjects\Bullets.cs" />
      <Compile Include="Assets\Scripts\Interface\IFactory\IPlayerFactory.cs" />
