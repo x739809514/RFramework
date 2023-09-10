@@ -52,6 +52,7 @@
      <Compile Include="Assets\Scripts\Tool\Enums.cs" />
      <Compile Include="Assets\Scripts\Interface\IFactory\IFactory.cs" />
      <Compile Include="Assets\Scripts\Data\Scriptable\PlayerScriptableObject.cs" />
+     <Compile Include="Assets\Scripts\GamePlay\Systems\Events\EventEnumType.cs" />
      <Compile Include="Assets\Scripts\Character\Character.cs" />
      <Compile Include="Assets\Scripts\Tool\Pool\ObjectPool.cs" />
      <Compile Include="Assets\Scripts\Factory\PlayerFactory.cs" />
@@ -65,7 +66,6 @@
      <Compile Include="Assets\Arts\TileMap Auto Rule\Scripts\TerrainAutoRuleTile.cs" />
      <Compile Include="Assets\Scripts\Character\Player\Player.cs" />
      <Compile Include="Assets\Scripts\Tool\Singleton\SingletonMono.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Systems\Events\EventType.cs" />
      <Compile Include="Assets\Scripts\Interface\IFactory\IEnemyFactory.cs" />
      <Compile Include="Assets\Scripts\Data\Datas\EnemyGenerateData.cs" />
      <Compile Include="Assets\Scripts\Character\Enemy\Ocar.cs" />

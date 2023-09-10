@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using Unity.VisualScripting;
+using UnityEngine;
 
 public class Bullets : MonoBehaviour
 {
@@ -6,10 +8,22 @@ public class Bullets : MonoBehaviour
     private readonly float fireRate = 1f;
     private readonly float bulletSpeed = 5f;
 
+#region Override
+
     private void FixedUpdate()
     {
         BulletLaunch();
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        OnTrigger(other);
+    }
+
+#endregion
+
+
+#region Virtual
 
     protected virtual void BulletLaunch()
     {
@@ -31,4 +45,14 @@ public class Bullets : MonoBehaviour
             transform1.eulerAngles = new Vector3(0, 0, angle);
         }
     }
+
+    /// <summary>
+    /// 子弹触碰目标后的逻辑
+    /// </summary>
+    /// <param name="go"></param>
+    protected virtual void OnTrigger(Collider2D go)
+    {
+    }
+
+#endregion
 }

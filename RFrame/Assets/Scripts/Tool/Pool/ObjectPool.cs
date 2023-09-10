@@ -51,7 +51,6 @@ public class ObjectPool<T> where T : MonoBehaviour
         {
             CreatePool(RETAIL_COUNT);
         }
-
         var t = objectPool.Dequeue();
         var go = t.gameObject;
         go.SetActive(true);

@@ -35,6 +35,15 @@ public static class EventSystem
     }
 
     /// <summary>
+    /// 发送事件 0个参数
+    /// </summary>
+    /// <param name="eventType"></param>
+    public static void Dispatch(Enum eventType)
+    {
+        sender.SendMessage(eventType, null);
+    }
+
+    /// <summary>
     /// 查询事件
     /// </summary>
     /// <param name="eventType"></param>

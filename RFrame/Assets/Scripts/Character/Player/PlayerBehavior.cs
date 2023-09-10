@@ -54,7 +54,7 @@ public class PlayerBehavior : MonoBehaviour
 
     private void ReadyToJump()
     {
-        if (Input.GetKeyDown(KeyCode.J) && isGround)
+        if (Input.GetKeyDown(KeyCode.Space) && isGround)
         {
             readyToJump = true;
         }

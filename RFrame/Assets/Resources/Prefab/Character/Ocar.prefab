@@ -96,9 +96,9 @@ GameObject:
   - component: {fileID: 827440846172535787}
   - component: {fileID: 7290522338571860060}
   - component: {fileID: 9152560142951891951}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ocar
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -132,8 +132,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterType: 0
-  hp: 0
-  defense: 0
 --- !u!50 &7290522338571860060
 Rigidbody2D:
   serializedVersion: 4
