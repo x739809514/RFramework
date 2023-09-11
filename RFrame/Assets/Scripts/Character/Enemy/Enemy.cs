@@ -1,29 +1,32 @@
-﻿public class Enemy : Character
+﻿using System;
+using Unity.VisualScripting;
+using UnityEngine;
+
+public class Enemy : Character
 {
 #region Override
-
     private void Start()
     {
-        AddListener();
+       OnStart();
     }
 
     private void OnDestroy()
     {
-        RemoveListener();
+        DoDestory();
     }
 
 #endregion
 
+    
 #region Hurt
 
     private void GetHurt(object msg)
     {
-        var damage = (int)msg;
-        Destroy(gameObject);
+        DoDamage(msg);
     }
-
 #endregion
 
+    
 #region AddListener
 
     private void AddListener()
@@ -34,6 +37,25 @@
     private void RemoveListener()
     {
         EventSystem.RemoveListener(EventEnumType.EnemyGetHitEvent, GetHurt);
+    }
+
+#endregion
+
+
+#region Virtual
+
+    protected virtual void DoDamage(object msg)
+    {
+    }
+
+    protected virtual void OnStart()
+    {
+        AddListener();
+    }
+
+    protected virtual void DoDestory()
+    {
+        RemoveListener();
     }
 
 #endregion

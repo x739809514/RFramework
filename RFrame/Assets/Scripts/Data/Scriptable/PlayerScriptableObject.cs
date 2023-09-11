@@ -22,4 +22,9 @@ public class PlayerScriptableObject : ScriptableObject
     /// 防御力
     /// </summary>
     public float defense;
+
+    /// <summary>
+    /// 攻击力
+    /// </summary>
+    public float attack;
 }

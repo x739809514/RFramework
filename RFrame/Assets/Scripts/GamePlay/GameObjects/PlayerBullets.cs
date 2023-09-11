@@ -6,7 +6,7 @@ public class PlayerBullets : Bullets
     {
         if (go.CompareTag("Enemy"))
         {
-            EventSystem.Dispatch(EventEnumType.PlayerAttackDamageEvent);
+            EventSystem.Dispatch(EventEnumType.PlayerAttackDamageEvent,go.transform);
         }
     }
 }

@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: LevelData
   m_EditorClassIdentifier: 
   enemyPool:
-  - characterType: 1
+  - characterType: 2
     enemyPre: {fileID: 7847345715608276690, guid: 9967823ceec2f154e958e163bc43fab7, type: 3}
     birthPos: {x: 3, y: 12}
-  - characterType: 2
+  - characterType: 3
     enemyPre: {fileID: 8408664665692713427, guid: 85a6178a60e4b6745b040128020ea868, type: 3}
     birthPos: {x: 5, y: -3}
   playerBirthPos: {x: -10, y: -1}

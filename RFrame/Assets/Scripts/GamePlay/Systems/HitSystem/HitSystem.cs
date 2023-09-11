@@ -1,10 +1,11 @@
-﻿using System;
-using Unity.VisualScripting;
+﻿using Tool;
 using UnityEngine;
 using Object = System.Object;
 
 public class HitSystem : MonoBehaviour
 {
+    public PlayerScriptableObject playerData;
+
 #region Overrride
 
     private void Start()
@@ -24,8 +25,29 @@ public class HitSystem : MonoBehaviour
     /// </summary>
     private void CommonDamage(Object msg)
     {
-        //Todo:计算伤害
-        EventSystem.Dispatch(EventEnumType.EnemyGetHitEvent,5);
+        var enemyTransform = msg as Transform;
+        var damage = 0f;
+        var characterType = CharacterType.Null;
+        if (enemyTransform!=null)
+        {
+            characterType = enemyTransform.GetComponent<Enemy>().characterType;
+            switch (characterType)
+            {
+                case CharacterType.Goblin:
+                    var goblin = enemyTransform.GetComponent<Goblin>();
+                    damage = playerData.attack - goblin.enemyAttribute.Defense;
+                    break;
+                case CharacterType.Ocar:
+                    var ocar = enemyTransform.GetComponent<Ocar>();
+                    damage = playerData.attack = ocar.enemyAttribute.Defense;
+                    break;
+            }
+        }
+        EventSystem.Dispatch(EventEnumType.EnemyGetHitEvent, new HitData()
+        {
+            damage = damage,
+            characterType = characterType
+        });
     }
 
 #region AddListener
@@ -41,4 +63,11 @@ public class HitSystem : MonoBehaviour
     }
 
 #endregion
+}
+
+
+public class HitData
+{
+    public float damage;
+    public CharacterType characterType;
 }
