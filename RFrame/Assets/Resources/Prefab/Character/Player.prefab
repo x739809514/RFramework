@@ -158,6 +158,8 @@ GameObject:
   - component: {fileID: 1919518234175198493}
   - component: {fileID: 5112263719900209673}
   - component: {fileID: 206121315167331782}
+  - component: {fileID: 98786086968254369}
+  - component: {fileID: -7286331426052627280}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -268,13 +270,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 692fa7844f4b447a82d3a3a4db82f22f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterType: 0
+  characterType: 1
   rig: {fileID: 0}
   playerData: {fileID: 11400000, guid: 37b9cbbe35e1ed849987676c803f7567, type: 2}
   bullet: {fileID: 4904108489833142175, guid: 63c7f89416f42034c870406e90a7efcd, type: 3}
   bulletPool: {fileID: 4489973173848498791}
   mark: {fileID: 4904108489833142175, guid: 1cac164251e82bb42ad4cbdbc9ab6f76, type: 3}
   markPool: {fileID: 1265736653337785560}
+  playerAttribute: {fileID: 0}
+--- !u!114 &98786086968254369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6557876867789511370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec117e7f6a45480c85bb956fa5e689c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerScriptableObject: {fileID: 11400000, guid: 37b9cbbe35e1ed849987676c803f7567, type: 2}
+--- !u!114 &-7286331426052627280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6557876867789511370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f52449a5f6c64ab483349f09507a12e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8304872179824111352
 GameObject:
   m_ObjectHideFlags: 0

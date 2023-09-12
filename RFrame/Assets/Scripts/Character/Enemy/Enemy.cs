@@ -5,9 +5,10 @@ using UnityEngine;
 public class Enemy : Character
 {
 #region Override
+
     private void Start()
     {
-       OnStart();
+        OnStart();
     }
 
     private void OnDestroy()
@@ -17,16 +18,17 @@ public class Enemy : Character
 
 #endregion
 
-    
+
 #region Hurt
 
     private void GetHurt(object msg)
     {
         DoDamage(msg);
     }
+
 #endregion
 
-    
+
 #region AddListener
 
     private void AddListener()
@@ -51,6 +53,7 @@ public class Enemy : Character
     protected virtual void OnStart()
     {
         AddListener();
+        transform.AddComponent<EnemyDeath>();
     }
 
     protected virtual void DoDestory()

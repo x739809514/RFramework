@@ -27,4 +27,14 @@ public class PlayerScriptableObject : ScriptableObject
     /// 攻击力
     /// </summary>
     public float attack;
+
+    /// <summary>
+    /// 玩家等级
+    /// </summary>
+    public int level;
+
+    /// <summary>
+    /// 玩家经验值
+    /// </summary>
+    public int exp;
 }

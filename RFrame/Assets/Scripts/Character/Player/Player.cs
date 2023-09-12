@@ -1,6 +1,4 @@
-﻿using System;
-using Unity.VisualScripting;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Player : Character
 {
@@ -15,8 +13,7 @@ public class Player : Character
     private void Awake()
     {
         rig = GetComponent<Rigidbody2D>();
-        transform.AddComponent<PlayerBehavior>();
-        playerAttribute = transform.AddComponent<PlayerAttribute>();
+        playerAttribute = transform.GetComponent<PlayerAttribute>();
     }
 
     private void Start()
@@ -29,10 +26,8 @@ public class Player : Character
 
     private void InitPlayer()
     {
-        playerData.hp = 10;
-        playerData.attack = 5;
-        playerData.jumpSpeed = 7;
-        playerData.walkSpeed = 5;
+        playerAttribute.JumpSpeed = 7;
+        playerAttribute.WalkSpeed = 5;
     }
 
 #endregion

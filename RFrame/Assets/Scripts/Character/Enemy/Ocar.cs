@@ -28,7 +28,7 @@ public class Ocar : Enemy
             enemyAttribute.Hp = data.damage - enemyAttribute.Defense;
             if (enemyAttribute.Hp <= 0)
             {
-                Destroy(gameObject);
+                EnemyDeath.Instance.OnDeath(gameObject, data.characterType);
             }
         }
     }

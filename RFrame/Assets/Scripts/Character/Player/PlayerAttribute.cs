@@ -1,36 +1,84 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class PlayerAttribute : MonoBehaviour
 {
     public PlayerScriptableObject playerScriptableObject;
 
-    public float walkSpeed
+
+#region Properties
+
+    public float WalkSpeed
     {
         get => playerScriptableObject.walkSpeed;
         set => playerScriptableObject.walkSpeed = value;
     }
 
-    public float jumpSpeed
+    public float JumpSpeed
     {
         get => playerScriptableObject.jumpSpeed;
         set => playerScriptableObject.jumpSpeed = value;
     }
 
-    public float hp
+    public float Hp => playerScriptableObject.level + 5;
+
+
+    public float Defense => playerScriptableObject.level + 2;
+
+
+    public float Attack => playerScriptableObject.level * 2;
+
+    public int Level => playerScriptableObject.level;
+
+    public int Exp
     {
-        get => playerScriptableObject.hp;
-        set => playerScriptableObject.hp = value;
+        get => playerScriptableObject.exp;
+        set => playerScriptableObject.exp = value;
     }
 
-    public float defense
+#endregion
+
+
+#region Override
+
+    private void Start()
     {
-        get => playerScriptableObject.defense;
-        set => playerScriptableObject.defense = value;
+        AddListener();
     }
 
-    public float attack
+    private void OnDestroy()
     {
-        get => playerScriptableObject.attack;
-        set => playerScriptableObject.attack = value;
+        RemoveListener();
     }
+
+#endregion
+
+
+#region Method
+
+    private void AddExp(object msg)
+    {
+        var exp = (int)msg;
+        Exp += exp;
+        playerScriptableObject.level = Exp / 10;
+        Debug.Log(Exp);
+        Debug.Log(Level);
+    }
+
+#endregion
+
+
+#region Addlistener
+
+    private void AddListener()
+    {
+        EventSystem.AddListener(EventEnumType.BattleSettlementEvent, AddExp);
+    }
+
+    private void RemoveListener()
+    {
+        EventSystem.RemoveListener(EventEnumType.BattleSettlementEvent, AddExp);
+    }
+
+#endregion
 }

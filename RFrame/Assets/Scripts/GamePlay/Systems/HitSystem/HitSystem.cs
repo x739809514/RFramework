@@ -48,6 +48,7 @@ public class HitSystem : MonoBehaviour
             damage = damage,
             characterType = characterType
         });
+        
     }
 
 #region AddListener

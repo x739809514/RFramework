@@ -55,6 +55,8 @@
      <Compile Include="Assets\Scripts\GamePlay\Systems\Events\EventEnumType.cs" />
      <Compile Include="Assets\Scripts\Character\Character.cs" />
      <Compile Include="Assets\Scripts\Tool\Pool\ObjectPool.cs" />
+     <Compile Include="Assets\Scripts\Tool\Singleton\Singleton.cs" />
+     <Compile Include="Assets\Scripts\Character\Death\EnemyDeath.cs" />
      <Compile Include="Assets\Scripts\Factory\PlayerFactory.cs" />
      <Compile Include="Assets\Scripts\Data\Scriptable\LevelScriptableObject.cs" />
      <Compile Include="Assets\Scripts\GamePlay\Systems\Events\EventSystem.cs" />
@@ -105,6 +107,7 @@
      <Folder Include="Assets\Scenes" />
      <Folder Include="Assets\Scripts\Data" />
      <Folder Include="Assets\Resources\Prefab\Character" />
+     <Folder Include="Assets\Scripts\Character\Death" />
      <Folder Include="Assets\Scripts\GamePlay\Camera" />
      <Folder Include="Assets\Scripts\GamePlay\Systems\HitSystem" />
      <Reference Include="UnityEngine">
