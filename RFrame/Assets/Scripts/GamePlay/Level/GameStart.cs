@@ -3,10 +3,19 @@
 public class GameStart : MonoBehaviour
 {
     public LevelScriptableObject levelData;
+    private GameObject teleportParent;
+
     private void Awake()
     {
+        teleportParent = new GameObject("Tlp");
         GeneratePlayer();
+        
+    }
+
+    private void Start()
+    {
         GenerateEnemy();
+        GenerateTeleport();
     }
 
     private void GeneratePlayer()
@@ -22,8 +31,19 @@ public class GameStart : MonoBehaviour
 
         foreach (var data in levelData.enemyPool)
         {
-           var enemy = factory.GenerateEnemy(data.enemyPre, data.characterType);
-           enemy.transform.position = data.birthPos;
+            var enemy = factory.GenerateEnemy(data.enemyPre, data.characterType);
+            enemy.transform.position = data.birthPos;
+        }
+    }
+
+    private void GenerateTeleport()
+    {
+        foreach (var teleport in levelData.teleportPos)
+        {
+            var go = (GameObject)Resources.Load("Prefab/teleport");
+            var tel = Instantiate(go, teleportParent.transform);
+            tel.SetActive(true);
+            tel.transform.localPosition = teleport;
         }
     }
 }

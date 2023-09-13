@@ -7,8 +7,9 @@ public class PlayerBehavior : MonoBehaviour
     private bool readyToJump;
     private bool isGround;
     private PlayerScriptableObject playerData;
-
     private Player player;
+
+    public bool jumpReset=false; //在空中重置跳跃
 
     private void Awake()
     {
@@ -37,6 +38,7 @@ public class PlayerBehavior : MonoBehaviour
         {
             Jump();
             readyToJump = false;
+            jumpReset = false;
         }
     }
 
@@ -54,7 +56,7 @@ public class PlayerBehavior : MonoBehaviour
 
     private void ReadyToJump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isGround)
+        if (Input.GetKeyDown(KeyCode.Space) && (isGround || jumpReset))
         {
             readyToJump = true;
         }
@@ -83,6 +85,7 @@ public class PlayerBehavior : MonoBehaviour
     }
 
 #endregion
+
 
 #region IEnumerator
 
