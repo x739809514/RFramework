@@ -9,7 +9,8 @@ public class PlayerCameraControl : MonoBehaviour
     private void Start()
     {
         virCamera = transform.GetComponentInChildren<CinemachineVirtualCamera>();
-        playerModule = GameObject.Find("player_only_one").transform;
+        Debug.Log("Find Player");
+        playerModule = GameObject.FindWithTag("Player").transform;
         
         InitVirtualCamera();
         //DontDestroyOnLoad(gameObject);
