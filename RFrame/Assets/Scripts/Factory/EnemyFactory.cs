@@ -1,5 +1,6 @@
 ﻿using Tool;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyFactory : MonoBehaviour,IEnemyFactory 
 {

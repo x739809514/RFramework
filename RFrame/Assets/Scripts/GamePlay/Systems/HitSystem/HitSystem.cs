@@ -11,6 +11,7 @@ public class HitSystem : MonoBehaviour
     private void Start()
     {
         AddListener();
+        //DontDestroyOnLoad(gameObject);
     }
 
     private void OnDestroy()

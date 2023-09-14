@@ -46,8 +46,10 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Arts\TileMap Auto Rule\Scripts\Editor\AutoRuleTileEditor.cs" />
+     <Compile Include="Assets\Scripts\Tool\Attribute\Editor\SceneNameEditor.cs" />
      <Folder Include="Assets\Arts\TileMap Auto Rule\Scripts\Editor" />
      <Folder Include="Assets\Arts\TileMap Auto Rule\Scripts\Editor\Resources" />
+     <Folder Include="Assets\Scripts\Tool\Attribute\Editor" />
      <Reference Include="UnityEngine">
      <HintPath>D:\Unity\2022.3.8f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
      </Reference>

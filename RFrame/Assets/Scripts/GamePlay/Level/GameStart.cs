@@ -4,6 +4,7 @@ public class GameStart : MonoBehaviour
 {
     public LevelScriptableObject levelData;
     private GameObject teleportParent;
+    public Transform enemyParent;
 
     private void Awake()
     {
@@ -32,7 +33,8 @@ public class GameStart : MonoBehaviour
         foreach (var data in levelData.enemyPool)
         {
             var enemy = factory.GenerateEnemy(data.enemyPre, data.characterType);
-            enemy.transform.position = data.birthPos;
+            enemy.transform.localPosition = data.birthPos;
+            enemy.transform.SetParent(enemyParent);
         }
     }
 

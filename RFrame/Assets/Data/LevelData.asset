@@ -15,12 +15,13 @@ MonoBehaviour:
   enemyPool:
   - characterType: 2
     enemyPre: {fileID: 7847345715608276690, guid: 9967823ceec2f154e958e163bc43fab7, type: 3}
-    birthPos: {x: 3, y: 12}
+    birthPos: {x: 4.13, y: -2.78}
   - characterType: 3
     enemyPre: {fileID: 8408664665692713427, guid: 85a6178a60e4b6745b040128020ea868, type: 3}
-    birthPos: {x: 5, y: -3}
-  playerBirthPos: {x: -10, y: -1}
+    birthPos: {x: 6.44, y: 12.69}
+  playerBirthPos: {x: 11.3, y: 13}
   teleportPos:
   - {x: 12.22, y: 0.67, z: 0}
   - {x: -1.47, y: 9.69, z: 0}
-  - {x: 12.2, y: 8.2, z: 0}
+  - {x: 12.2, y: 6.28, z: 0}
+  - {x: 0.06, y: 11.94, z: 0}

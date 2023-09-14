@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : Character
 {
@@ -9,6 +11,9 @@ public class Player : Character
     public GameObject mark;
     public Transform markPool;
     [HideInInspector] public PlayerAttribute playerAttribute;
+
+
+#region Override
 
     private void Awake()
     {
@@ -21,6 +26,18 @@ public class Player : Character
         InitPlayer();
         playerAttribute.playerScriptableObject = playerData;
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Exit"))
+        {
+            var changeScene = other.transform.GetComponent<ChangeScene>();
+            changeScene.Teleport();
+        }
+    }
+
+#endregion
+
 
 #region 玩家伤害系统测试
 

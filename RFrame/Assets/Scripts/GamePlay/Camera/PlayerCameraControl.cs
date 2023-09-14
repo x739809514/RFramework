@@ -12,6 +12,7 @@ public class PlayerCameraControl : MonoBehaviour
         playerModule = GameObject.Find("player_only_one").transform;
         
         InitVirtualCamera();
+        //DontDestroyOnLoad(gameObject);
     }
 
     private void InitVirtualCamera()
