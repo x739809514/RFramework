@@ -1,22 +1,20 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ChangeSceneSystem : SingletonMono<ChangeSceneSystem>
 {
     public CanvasGroup fadeCanvas;
-    private float fadeDuration = 0.5f;
+    private readonly float fadeDuration = 0.25f;
     private bool isFade;
-
-    private void Start()
-    {
-        //DontDestroyOnLoad(gameObject);
-    }
+    
 
     public void OnTeleport(string from, string to)
     {
-        StartCoroutine(TransitionScene(from, to));
+        if (!isFade)
+        {
+            StartCoroutine(TransitionScene(from, to));
+        }
     }
 
     IEnumerator TransitionScene(string from, string to)
@@ -35,10 +33,12 @@ public class ChangeSceneSystem : SingletonMono<ChangeSceneSystem>
         isFade = true;
         fadeCanvas.blocksRaycasts = true;
 
-        var speed = (fadeCanvas.alpha - targetAlpha) / fadeDuration;
-        if (Mathf.Approximately(fadeCanvas.alpha, targetAlpha) == false)
+        var speed = Mathf.Abs(fadeCanvas.alpha - targetAlpha) / fadeDuration;
+
+        while (Mathf.Approximately(fadeCanvas.alpha, targetAlpha) == false)
         {
             fadeCanvas.alpha = Mathf.MoveTowards(fadeCanvas.alpha, targetAlpha, speed * Time.deltaTime);
+            Debug.Log(fadeCanvas.alpha);
             yield return null;
         }
 

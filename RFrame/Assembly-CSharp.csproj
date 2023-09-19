@@ -93,6 +93,7 @@
      <Folder Include="Assets\Arts\TileMap Auto Rule\Scripts" />
      <Folder Include="Assets\Scripts\Character\Enemy" />
      <Folder Include="Assets\Scripts\Character\Player" />
+     <Folder Include="Assets\Data\LevelData" />
      <Folder Include="Assets\Scripts\Tool\Singleton" />
      <Folder Include="Assets\Scripts" />
      <Folder Include="Assets\Resources\Prefab" />

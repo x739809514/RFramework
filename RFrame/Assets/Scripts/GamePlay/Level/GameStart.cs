@@ -24,7 +24,6 @@ public class GameStart : MonoBehaviour
         var factory = gameObject.AddComponent<PlayerFactory>();
         var player = factory.GeneratePlayer();
         player.transform.position = levelData.playerBirthPos;
-        Debug.Log("Create Player");
     }
 
     private void GenerateEnemy()
