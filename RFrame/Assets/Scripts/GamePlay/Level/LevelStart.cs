@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class GameStart : MonoBehaviour
+public class LevelStart : MonoBehaviour
 {
     public LevelScriptableObject levelData;
     private GameObject teleportParent;

@@ -46,8 +46,8 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\GamePlay\Camera\PlayerCameraControl.cs" />
+     <Compile Include="Assets\Scripts\GamePlay\GameManager.cs" />
      <Compile Include="Assets\Scripts\Character\Player\PlayerBehavior.cs" />
-     <Compile Include="Assets\Scripts\GamePlay\Level\GameStart.cs" />
      <Compile Include="Assets\Scripts\GamePlay\GameObjects\PlayerBullets.cs" />
      <Compile Include="Assets\Scripts\Tool\Enums.cs" />
      <Compile Include="Assets\Scripts\Interface\IFactory\IFactory.cs" />
@@ -67,11 +67,13 @@
      <Compile Include="Assets\Scripts\GamePlay\Systems\SavingSystem\SaveManager.cs" />
      <Compile Include="Assets\Scripts\Character\Enemy\Enemy.cs" />
      <Compile Include="Assets\Scripts\GamePlay\GameObjects\Bullets.cs" />
+     <Compile Include="Assets\Scripts\GamePlay\Level\LevelStart.cs" />
      <Compile Include="Assets\Scripts\Interface\IFactory\IPlayerFactory.cs" />
      <Compile Include="Assets\Scripts\Character\Enemy\EnemyAttribute.cs" />
      <Compile Include="Assets\Arts\TileMap Auto Rule\Scripts\TerrainAutoRuleTile.cs" />
      <Compile Include="Assets\Scripts\Character\Player\Player.cs" />
      <Compile Include="Assets\Scripts\Tool\Singleton\SingletonMono.cs" />
+     <Compile Include="Assets\Scripts\GamePlay\Systems\SavingSystem\Data\ChangeSceneData.cs" />
      <Compile Include="Assets\Scripts\Interface\IFactory\IEnemyFactory.cs" />
      <Compile Include="Assets\Scripts\Data\Datas\EnemyGenerateData.cs" />
      <Compile Include="Assets\Scripts\Character\Player\PlayerAttribute.cs" />

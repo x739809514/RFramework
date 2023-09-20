@@ -1,10 +1,8 @@
 ﻿public interface ISaveHandler
 {
-    public void Register();
-
-    public void DoRegister()
+    public void DoRegister(ISaveHandler handler)
     {
-        SaveManager.Instance.Register(this);
+        SaveManager.Instance.Register(handler);
     }
     
     /// <summary>

@@ -9,7 +9,7 @@ public class PlayerBehavior : MonoBehaviour
     private PlayerScriptableObject playerData;
     private Player player;
 
-    public bool jumpReset=false; //在空中重置跳跃
+    public bool jumpReset = false; //在空中重置跳跃
 
     private void Awake()
     {
@@ -69,7 +69,8 @@ public class PlayerBehavior : MonoBehaviour
 
     private void Shoot()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) &&
+            UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject() == false)
         {
             //射击实弹
             var bullet = ObjectPool<PlayerBullets>.Instance.Spawn();
