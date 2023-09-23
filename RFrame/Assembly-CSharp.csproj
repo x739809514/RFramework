@@ -54,8 +54,11 @@
      <Compile Include="Assets\Scripts\Data\Scriptable\PlayerScriptableObject.cs" />
      <Compile Include="Assets\Scripts\GamePlay\Systems\Events\EventEnumType.cs" />
      <Compile Include="Assets\Scripts\Character\Character.cs" />
+     <Compile Include="Assets\Scripts\UI\Base\UIModule.cs" />
      <Compile Include="Assets\Scripts\Tool\Pool\ObjectPool.cs" />
      <Compile Include="Assets\Scripts\Tool\Singleton\Singleton.cs" />
+     <Compile Include="Assets\Scripts\UI\Base\BaseContent.cs" />
+     <Compile Include="Assets\Scripts\UI\Base\UIType.cs" />
      <Compile Include="Assets\Scripts\Character\Death\EnemyDeath.cs" />
      <Compile Include="Assets\Scripts\Factory\PlayerFactory.cs" />
      <Compile Include="Assets\Scripts\Data\Scriptable\LevelScriptableObject.cs" />
@@ -72,6 +75,8 @@
      <Compile Include="Assets\Scripts\Character\Enemy\EnemyAttribute.cs" />
      <Compile Include="Assets\Arts\TileMap Auto Rule\Scripts\TerrainAutoRuleTile.cs" />
      <Compile Include="Assets\Scripts\Character\Player\Player.cs" />
+     <Compile Include="Assets\Scripts\UI\Base\PanelBase.cs" />
+     <Compile Include="Assets\Scripts\UI\Panel_Hud.cs" />
      <Compile Include="Assets\Scripts\Tool\Singleton\SingletonMono.cs" />
      <Compile Include="Assets\Scripts\GamePlay\Systems\SavingSystem\Data\ChangeSceneData.cs" />
      <Compile Include="Assets\Scripts\Interface\IFactory\IEnemyFactory.cs" />
@@ -95,7 +100,9 @@
      <Folder Include="Assets\Resources" />
      <Folder Include="Assets\Scripts\Data\Scriptable" />
      <Folder Include="Assets\Scripts\GamePlay\Systems" />
+     <Folder Include="Assets\Scripts\UI\Base" />
      <Folder Include="Assets\Scripts\GamePlay\GameObjects" />
+     <Folder Include="Assets\Scripts\UI" />
      <Folder Include="Assets\Arts\TileMap Auto Rule\Scripts" />
      <Folder Include="Assets\Scripts\Character\Enemy" />
      <Folder Include="Assets\Scripts\Character\Player" />
@@ -112,6 +119,7 @@
      <Folder Include="Assets\Scripts\Character" />
      <Folder Include="Assets\Arts\TileMap Auto Rule" />
      <Folder Include="Assets\Scripts\Interface\IFactory" />
+     <Folder Include="Assets\Resources\UI" />
      <Folder Include="Assets\Scripts\GamePlay\Level" />
      <Folder Include="Assets\Scripts\Tool\Pool" />
      <Folder Include="Assets\Arts\Tile" />
