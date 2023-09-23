@@ -1,4 +1,6 @@
-﻿public class Panel_Hud_Content : BaseContent
+﻿using UnityEngine;
+
+public class Panel_Hud_Content : BaseContent
 {
     public Panel_Hud_Content() : base(UIType.Panel_Hud)
     {
@@ -11,12 +13,12 @@ public class Panel_Hud : PanelBase
 
     public override void OnEnter()
     {
-        base.OnEnter();
+        
     }
 
-    public override void OnOpen()
+    public override void OnOpen(Object obj)
     {
-        base.OnOpen();
+        
     }
 
     public override void OnExit()

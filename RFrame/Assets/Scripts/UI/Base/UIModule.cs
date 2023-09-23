@@ -22,7 +22,7 @@ public class UIModule : SingletonMono<UIModule>
     /// 打开面板
     /// </summary>
     /// <param name="panelName"></param>
-    public void OpenPanel(BaseContent content)
+    public void OpenPanel(BaseContent content, Object obj=null)
     {
         panelStack ??= new Stack<PanelBase>();
 
@@ -32,9 +32,9 @@ public class UIModule : SingletonMono<UIModule>
             curPanel.OnClose();
         }
 
-        var panel = GetPanel(content);
+        var panel = GetPanel(content,obj);
         panelStack.Push(panel);
-        panel.OnEnter();
+        panel.OnOpen(obj);
     }
 
     /// <summary>
@@ -60,7 +60,7 @@ public class UIModule : SingletonMono<UIModule>
     /// </summary>
     /// <param name="uiType"></param>
     /// <returns></returns>
-    private PanelBase GetPanel(BaseContent content)
+    private PanelBase GetPanel(BaseContent content, Object obj)
     {
         panelExistDic ??= new Dictionary<UIType, PanelBase>();
 
@@ -70,7 +70,7 @@ public class UIModule : SingletonMono<UIModule>
         var b = go.GetComponent<PanelBase>();
         if (b != null)
         {
-            b.OnOpen();
+            b.OnOpen(obj);
             panelExistDic.Add(content.uiType, b);
             return b;
         }

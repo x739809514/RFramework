@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 public abstract class PanelBase : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public abstract class PanelBase : MonoBehaviour
     /// <summary>
     /// 面板打开时调用,相当于Awake
     /// </summary>
-    public virtual void OnOpen()
+    public virtual void OnOpen(Object obj)
     {
     }
 
