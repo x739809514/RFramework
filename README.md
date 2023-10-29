@@ -106,7 +106,7 @@ ObjectPool<PlayerBullets>.Instance.Recycle(playerBullet);
 ## Factory Pattern
 
 The factory pattern is generally used to create objects, and is a pattern structure that provides an interface for an accessing class to create a set of related or interdependent objects, and the accessing class does not have to specify the specific class of the desired product in order to get a different class of products of the same family. In this framework I have two enemies, `Goblin`,`Orc`, which belong to the same character family, and one `player`, which belongs to another character family, so I defined a character factory and in turn defined an enemy factory, `IEnemyFactory`, and a player factory, `IPlayerFactory`, to create respectively the enemies and monsters respectively. The convenience of this pattern is that it can be easily extended later. Suppose I want to add an elf class later, I only need to implement an elf factory to create all kinds of elves.
-! [image](https://github.com/x739809514/RFramework/assets/53636082/8367c8ba-1246-418e-b884-996f01811bfb)
+![image](https://github.com/x739809514/RFramework/assets/53636082/8367c8ba-1246-418e-b884-996f01811bfb)
 ```C#
 // First implement a specific factory interface
 public interface IPlayerFactory : IFactory
@@ -169,13 +169,13 @@ The scene loader is also implemented through MVC, by hooking the `ChangeScene` c
 
 ### How to use
 
-! [image](https://github.com/x739809514/RFramework/assets/53636082/8841f2a3-8a64-4ca5-a4a5-3f8a6f807098)
+![image](https://github.com/x739809514/RFramework/assets/53636082/8841f2a3-8a64-4ca5-a4a5-3f8a6f807098)
 
 ### Scene initialization
 
 In this framework, I use scriptobjectable to store the scene initialization information, in the `LevelData` you can see the specific scene setting data, such as the initial position of the monster, the initial position of the character, the collision of the camera and so on, you can customize your own scene by setting different LevelData.
 
-! [image](https://github.com/x739809514/RFramework/assets/53636082/8e6229bb-e367-4e82-b296-d97464de1ebf)
+![image](https://github.com/x739809514/RFramework/assets/53636082/8e6229bb-e367-4e82-b296-d97464de1ebf)
 
 ## UI framework
 
