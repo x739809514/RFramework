@@ -1,78 +1,78 @@
 # RFramework
 
-这个框架主要用于给刚开始学做游戏的初学者，里面提供了简单的事件分发，存储，场景切换等系统。初学者可以在这个框架的基础上构建自己的2D游戏。同时还可以学习相关设计模式的知识。本篇说明也会简单讲解框架中的设计模式和部分系统的使用方法。
-大致讲一下该框架的使用方法：
+This framework is mainly used for beginners who are just learning how to make games. It provides a simple system for event distribution, storage, scene switching, etc. The framework allows beginners to build their own 2D games based on this framework. Beginners can build their own 2D games based on this framework. At the same time, you can also learn the knowledge of related design patterns. This note will also briefly explain the design patterns in the framework and the use of some systems.
+Roughly speaking, how to use the framework:
 
-1.  游戏的入口的场景为`Stable`, 在 Scenes 文件夹中
-2.  游戏的所有脚本都在 Scripts 中，关卡数据和玩家数据放在 Data 中
-3.  代码文件：Character 文件夹中是角色相关的逻辑， Factory中是工厂模式相关代码，GamePlay中都是游戏逻辑相关代码，其中包括事件等系统相关代码和场景切换逻辑代码，还有简单的gameobject上的逻辑，如子弹等。
-4.  UI文件夹中是UI框架。
+1. the entry scene of the game is `Stable`, in the Scenes folder
+2. all scripts of the game are in Scripts, level data and player data are in Data.
+3. code files: Character folder is character related logic, Factory is factory mode related code, GamePlay is game logic related code, including events and other system related code and scene switching logic code, and simple gameobject logic, such as bullets. 4. UI folder is UI folder.
+4. UI folder is UI framework.
 
-## 事件分发
+## Event distribution
 
-框架中的事件分发是观察者模式的体现，游戏中的观察者模式主要通过delegate实现，通过在delegate中绑定对应的事件链，然后调用delegate的invoke()函数执行对应的一连串事件函数。在”Events” 文件夹中，`EventSender` 这个类是事件系统的主体函数，在其中我设置了各种具体发送事件的函数，而`EventSystem` 是对`EventSender` 的一层封装，整个类是一个静态类，因为在整个项目中只需要有一个事件系统。`EventEnumType` 则是具体事件的枚举类。
+The event distribution in the framework is the embodiment of the observer pattern, which is mainly realized through the delegate, by binding the corresponding event chain in the delegate, and then calling the invoke() function of the delegate to execute the corresponding chain of event functions. In the "Events" folder, the class `EventSender` is the main function of the event system, in which I set up various specific functions to send events, while `EventSystem` is a layer of encapsulation of `EventSender`, the whole class is a static class. The whole class is a static class because there is only one event system needed in the whole project. The `EventEnumType` is an enumeration class for specific events.
 
-### 使用方法
+### Usage
 
-首先在`EventEnumType`中注册你所需要的事件枚举，然后在你所需要的观察者脚本中添加该事件的监听（也就是在被调用函数所在的脚本中添加），最后在被观察者脚本（也就是事件触发的地方）调用`EventSystem.Dispatch`.
+First register the event enumeration you need in `EventEnumType`, then add a listener for the event in the observer script you need (i.e., in the script where the called function is located), and finally call `EventSystem.Dispatch` in the observed script (where the event is triggered).
 ```c#
-//注册
+//Register
 public enum EventEnumType
 {
     Null = 0,
-    PlayerAttackDamageEvent = 1, //玩家攻击
-    EnemyGetHitEvent = 2, //敌人受到伤害
-    BattleSettlementEvent = 3, //滴人死亡
-    GameStartEvent = 4, //游戏开始事件
-    GameEndEvent = 5, //游戏结束事件
+    PlayerAttackDamageEvent = 1, //Player attacks
+    EnemyGetHitEvent = 2, //Enemy takes damage
+    BattleSettlementEvent = 3, //Dropper dies
+    GameStartEvent = 4, //Game start event
+    GameEndEvent = 5, //game end event
 }
-//绑定
+//Binding
 private void AddListener()
 {
     EventSystem.AddListener(EventEnumType.PlayerAttackDamageEvent, CommonDamage);
 }
-//调用
-EventSystem.Dispatch(EventEnumType.PlayerAttackDamageEvent,go.transform);
+// Call
+EventSystem.Dispatch(EventEnumType.PlayerAttackDamageEvent, go.transform);
 ```
 
-## 单例模式
+## Singleton pattern
 
-在游戏中单例模式是一个会经常被用到的设计模式，一般当我们想要保持某一个系统只需要一个实例的时候就可以使用单例模式，但是切记单例模式不能滥用，否则会造成严重的代码耦合，造成后期维护困难。
-单例模式的使用也非常简单，主要有通过static实现。在该框架中，我实现了两种泛型单例模式，一个是关于mono的，另一个是带构造函数的。但是我所实现的是懒汉式写法，感兴趣的同学可以自己优化。
+The singleton pattern is a design pattern that is often used in games, generally when we want to keep a system with only one instance we can use the singleton pattern, but remember that the singleton pattern should not be abused, otherwise it will cause serious code coupling, resulting in later maintenance difficulties.
+The use of the singleton pattern is also very simple, mainly through the static realization. In the framework, I realized two generalized singleton pattern, one is about mono, the other is with constructor. But what I have implemented is written in a lazy way, interested students can optimize it by themselves.
 ```c#
 //mono
 public class SingletonMono<T> : MonoBehaviour where T : SingletonMono<T>
 {
-    private static T instance;
+    private static T instance.
 
-    public static T Instance => instance;
+    public static T Instance => instance; public static T Instance => instance.
 
     private void Awake()
     {
-        if (instance != null)
+        if (instance ! instance => instance; private void Awake() { if (instance !
         {
-            Destroy(instance);
+            Destroy(instance); }
         }
 
-        instance = (T)this;
+        instance = (T)this; }
     }
 }
 ```
 ```C#
 public class Singleton<T> where T : new()
 {
-    private T instance;
+    private T instance.
 
-    public T Instance => instance ??= new T();
+    public T Instance => instance ? = new T();
 }
 ```
 
-## 对象池
+## Object pooling
 
-在游戏中，我们常常会需要大量的创建对象，但是new 和 destroy一个对象会涉及内存的分配和回收，一两个没什么问题，但是如果需要大量的创建，则会造成非常大的内存消耗，比如射击时的子弹，UI面板等。所以这个时候我们就需要一个对象池来存放所创建的对象，循环利用这些对象，来达到优化性能的效果。
-对象池实现起来也非常的简单，我们使用一个队列来存储所创建的对象，并开放两个函数让外部获取对象，同时我们还需要让这个对象池是一个泛型类，以便针对不同类型的对象。
+In games, we often need to create a large number of objects, but new and destroy an object will involve memory allocation and recycling, one or two is not a problem, but if you need to create a large number of objects, it will cause a very large memory consumption, such as bullets, UI panels and so on. So this time we need an object pool to store the created objects, recycling these objects to achieve the effect of optimizing performance.
+Object pooling is very simple to implement, we use a queue to store the created objects, and open two functions to allow external access to the objects, and we also need to make the object pool a generic class to target different types of objects.
 ```C#
-private Queue<T> objectPool; //使用队列（先进先出）
+private Queue<T> objectPool; //Use the queue (FIFO)
 
 public T Spawn()
 {
@@ -80,120 +80,120 @@ public T Spawn()
     {
         CreatePool(RETAIL_COUNT);
     }
-    var t = objectPool.Dequeue();
+    var t = objectPool.Dequeue(); // do something.
     // do something
-    return t;
+    return t; } var t = objectPool.Dequeue(); // do something
 }
 
 public void Recycle(T t)
 {
-    t.gameObject.SetActive(false);
-    objectPool.Enqueue(t);
+    t.gameObject.SetActive(false); objectPool.Enqueue(t); } public void Recycle(t) { t.gameObject.
+    objectPool.Enqueue(t); }
 }
 ```
 
-### 使用方法
+### Usage
 
 ```C#
-//初始化
+// Initialization
 ObjectPool<PlayerBullets>.Instance.InitPool(player.bulletPool, player.bullet);
-//取出
+//Remove
 var bullet = ObjectPool<PlayerBullets>.Instance.Spawn();
-//回收
+//Recycle
 ObjectPool<PlayerBullets>.Instance.Recycle(playerBullet);
 ```
 
-## 工厂模式
+## Factory Pattern
 
-工厂模式一般用来创建对象，是一种为访问类提供一个创建一组相关或相互依赖对象的接口，且访问类无须指定所要产品的具体类就能得到同族的不同等级的产品的模式结构。在该框架中我有两个敌人，`Goblin`,`Orc`, 这两个属于同一个角色族，另外还有一个`player`, 这属于另一个角色族，所以我定义了一个角色工厂，并又分别定义了敌人工厂`IEnemyFactory`和玩家工厂`IPlayerFactory`来分别创建敌人和怪物。这种模式的方便之处在于可以为日后的扩展带来方便，假设我如后想要添加一个精灵族类，则只需要实现一个精灵工厂就能创建各种各样的精灵。
-![image](https://github.com/x739809514/RFramework/assets/53636082/8367c8ba-1246-418e-b884-996f01811bfb)
+The factory pattern is generally used to create objects, and is a pattern structure that provides an interface for an accessing class to create a set of related or interdependent objects, and the accessing class does not have to specify the specific class of the desired product in order to get a different class of products of the same family. In this framework I have two enemies, `Goblin`,`Orc`, which belong to the same character family, and one `player`, which belongs to another character family, so I defined a character factory and in turn defined an enemy factory, `IEnemyFactory`, and a player factory, `IPlayerFactory`, to create respectively the enemies and monsters respectively. The convenience of this pattern is that it can be easily extended later. Suppose I want to add an elf class later, I only need to implement an elf factory to create all kinds of elves.
+! [image](https://github.com/x739809514/RFramework/assets/53636082/8367c8ba-1246-418e-b884-996f01811bfb)
 ```C#
-//首先实现一个具体的工厂接口
+// First implement a specific factory interface
 public interface IPlayerFactory : IFactory
 {
     public GameObject GeneratePlayer();
 }
-//实现具体的工厂逻辑
+//Implement the concrete factory logic
 public class PlayerFactory : MonoBehaviour,IPlayerFactory
-{
+public class PlayerFactory : MonoBehavior,IPlayerFactory {
     public GameObject GeneratePlayer()
-    {
-        var prefab = Resources.Load("Prefab/Character/Player");
+    var GameObject GeneratePlayer() {
+        var prefab = Resources.Load("Prefab/Character/Player"); // do something.
         // do something 
-        return player;
+        return player; }
     }
 }
 ```
 
-### 使用方法
+### Usage
 
 ```C#
-var factory = gameObject.AddComponent<PlayerFactory>(); //首先添加脚本
-var player = factory.GeneratePlayer(); //创建角色
+var factory = gameObject.AddComponent<PlayerFactory>(); // first add the scripts
+var player = factory.GeneratePlayer(); //create the player
 ```
 
-## 存储系统
+## Storage system
 
-存储系统主要使用了MVC架构，并使用NewtonJson来实现json的存储。在框架中，我定义了一个`ISaveHandler`,在里面实现了注册函数，并定义了两个函数`GenerateSaveData`, `LoadSaveData`, 分别为了创建存储数据对象，和读取数据对象。在SaveManager中是时存储逻辑和load逻辑。
+The storage system mainly uses MVC architecture and uses NewtonJson for json storage. In the framework, I defined an `ISaveHandler`, which implements the registration function, and defined two functions `GenerateSaveData`, `LoadSaveData`, in order to create the storage data object, and read the data object respectively. In SaveManager, it is the store logic and load logic.
 
-### 使用方法
+### Usage
 
-只要在需要存储数据的类中实现`ISaveHandler`接口，并注册即可
+Just implement the `ISaveHandler` interface in the class that needs to store the data and register it.
 ```C#
-//定义一个存储数据结构
+//Define a save data structure
 public partial class SaveData
 {
-    public string levelName;
+    public string levelName; }
 }
-//注册
-ISaveHandler handler = this;
-handler.DoRegister(this);
-//接口实现
+// register
+ISaveHandler handler = this; handler.
+handler.DoRegister(this); //Interface implementation; }
+//Interface implementation
 public SaveData GenerateSaveData()
 {
-    var data = new SaveData();
-    data.levelName = curScene;
-    return data;
+    var data = new SaveData(); data.levelName = curScene; }
+    data.levelName = curScene; return data; var data = new SaveData(); data.levelName = curScene
+    data = new SaveData(); data.levelName = curScene; return data; }
 }
 
 public void LoadSaveData(SaveData saveData)
-{
-    curScene = saveData.levelName;
-    Debug.Log("Load Scuess");
+} public void LoadSaveData(SaveData saveData)
+    curScene = saveData.levelName; } public void LoadSaveData(SaveData saveData) { curScene = saveData.
+    Debug.Log("Load Scuess"); }
 }
 ```
 
-## 场景切换及场景加载
+## Scene switching and scene loading
 
-场景加载器也是通过MVC实现的，通过给场景挂`ChangeScene`组件，我设立了from和to两个字段作为场景变量，然后选定进出场景就可以实现场景切换。
+The scene loader is also implemented through MVC, by hooking the `ChangeScene` component to the scene, I set up the from and to fields as scene variables, and then selecting in and out of the scene will enable scene switching.
 
-### 使用方式
+### How to use
 
-![image](https://github.com/x739809514/RFramework/assets/53636082/8841f2a3-8a64-4ca5-a4a5-3f8a6f807098)
+! [image](https://github.com/x739809514/RFramework/assets/53636082/8841f2a3-8a64-4ca5-a4a5-3f8a6f807098)
 
-### 场景初始化
+### Scene initialization
 
-在该框架中我是用scriptobjectable来存储场景初始化信息，在`LevelData`中你可以看到具体的场景设定数据，比如怪物的初始位置，角色的初始位置，相机碰撞等，你可以通过设定不同的LevelData来自己定制不同的场景。
+In this framework, I use scriptobjectable to store the scene initialization information, in the `LevelData` you can see the specific scene setting data, such as the initial position of the monster, the initial position of the character, the collision of the camera and so on, you can customize your own scene by setting different LevelData.
 
-![image](https://github.com/x739809514/RFramework/assets/53636082/8e6229bb-e367-4e82-b296-d97464de1ebf)
+! [image](https://github.com/x739809514/RFramework/assets/53636082/8e6229bb-e367-4e82-b296-d97464de1ebf)
 
-## UI框架
+## UI framework
 
-在本框架中没有使用热更框架，如果想了解热更相关可以查看我的另一个ILRuntime项目, 所以这里的UI框架是在主工程实现的。`UIMoudle`中是具体的UI切换逻辑，`PanelBase`中开放了几个UI面板中会用到的函数，另外`BaseContent`中存放了`UIType`对象，在`UIType`中存放了path等属性，同时在`UIMoudle`中，我定义了一个以UIType位Key, PanelBase为value的字典，方便索引面板。最后UI面板的脚本是事先挂在面板prefab上的（这种方式其实并不好，读者可以查看ILRuntime的那个项目，使用那其中的UI框架）。
+There is no hotshift framework used in this framework, if you want to know about hotshift you can check out my other ILRuntime project, so the UI framework here is implemented in the main project. In `UIMoudle`, there is a specific UI switching logic, in `PanelBase`, there are several functions that will be used in the UI panel, and in `BaseContent`, there is a `UIType` object, and in `UIType`, there are properties such as path etc. Meanwhile, in `UIMoudle`, I have defined a UI panel that uses UIType as the key, PanelBase as the key, and `UIMoudle` as the panel. bitKey, PanelBase as value to easily index the panels. Finally the UI panel script is pre-hosted on the panel prefab (this is not really a good way to do it, readers can check out that ILRuntime project and use the UI framework there).
 
-### 使用方法
+### Usage
 
 ```C#
-//注册面板
+// Register the panel
 public static readonly UIType Panel_Hud = new UIType("Panel_Hud");
-//实现具体面板的content
+// Realize the content of the specific panel
 public class Panel_Hud_Content : BaseContent
 {
     public Panel_Hud_Content() : base(UIType.Panel_Hud)
     {
     }
 }
-//实现具体面板
+// Realize the specific panel
 public class Panel_Hud : PanelBase
 {
 }
